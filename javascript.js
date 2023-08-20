@@ -2,6 +2,8 @@ function main () {
 
     createRows();
     fillRows();
+    detectMouse();
+    buttonPrompt();
 }
 
 function createRows() {
@@ -22,6 +24,20 @@ function fillRows() {
             divRow.appendChild(divCreate);
         }
     }
+}
+
+function detectMouse() {
+    const divSingle = document.querySelectorAll('.single');
+    divSingle.forEach(div => {
+        div.addEventListener('mouseover', e => {
+            e.target.classList.add('hover');
+        });
+    })
+}
+
+function buttonPrompt() {
+    const button = document.querySelector("button");
+    button.addEventListener('click', () => prompt("Number of squares"));
 }
 
 main();
