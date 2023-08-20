@@ -1,0 +1,18 @@
+.divWhole {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.single {
+    box-sizing: border-box;
+    border: solid 1px coral;
+    background-color: teal;
+    height: 20px;
+    width: 20px;
+}
