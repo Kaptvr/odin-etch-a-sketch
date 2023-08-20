@@ -32,7 +32,7 @@ function detectMouse() {
     const divSingle = document.querySelectorAll('.single');
     divSingle.forEach(div => {
         div.addEventListener('mouseover', e => {
-            e.target.classList.add('hover');
+            e.target.style.backgroundColor = randomColor();
         });
     })
 }
@@ -54,6 +54,15 @@ function buttonPrompt(squares) {
         }
     });
     
+}
+
+function randomColor() {
+    let colorCode = '#';
+    let hexLetters ="0123456789ABCDEF";
+    for (let i = 0; i < 6; i++) {
+        colorCode += hexLetters[Math.floor(Math.random() * 16)]
+    }
+    return colorCode;
 }
 
 main();

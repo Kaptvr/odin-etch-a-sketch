@@ -13,6 +13,7 @@ body {
     justify-content: center;
     width: 720px;
     height: 720px;
+    border: solid 1px #eee;
 }
 
 .row {
@@ -24,8 +25,8 @@ body {
 
 .single {
     box-sizing: border-box;
-    border: solid 1px coral;
-    background-color: teal;
+    border: solid 1px #eee;
+    background-color: white;
     flex: 1;
 }
 
@@ -40,9 +41,9 @@ body {
 }
 
 button {
-    padding: 4px 12px;
+    padding: 4px 36px;
     color: #444;
-    background-color: #bde;
+    background-color: #ddd;
     font-weight: 700;
     font-size: 24px;
     border-radius: 0;
@@ -50,5 +51,5 @@ button {
 }
 
 button:hover {
-    background-color: #acd;
+    background-color: #ccc;
 }
