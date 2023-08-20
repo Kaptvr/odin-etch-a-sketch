@@ -1,13 +1,15 @@
 function main () {
 
-    createRows();
-    fillRows();
+    let squares = 16; //default size == 16
+
+    createRows(squares);
+    fillRows(squares);
     detectMouse();
-    buttonPrompt();
+    buttonPrompt(squares); //set different number of squares per side
 }
 
-function createRows() {
-    for (let i = 0; i < 16; i++) {
+function createRows(squares) {
+    for (let i = 0; i < squares; i++) {
         const divWhole = document.querySelector('.divWhole'); //select hard-coded div
         const divCreate = document.createElement('div');
         divCreate.classList.add('row', `row${i}`);
@@ -15,9 +17,9 @@ function createRows() {
     }
 }
 
-function fillRows() {
-    for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+function fillRows(squares) {
+    for (let i = 0; i < squares; i++) {
+        for (let j = 0; j < squares; j++) {
             const divRow = document.querySelector(`.row${i}`);
             const divCreate = document.createElement('div');
             divCreate.classList.add('single');
@@ -35,40 +37,23 @@ function detectMouse() {
     })
 }
 
-function buttonPrompt() {
+function buttonPrompt(squares) {
     const button = document.querySelector("button");
-    button.addEventListener('click', () => prompt("Number of squares"));
+    button.addEventListener('click', (squares) => {
+        squares = prompt("Number of squares (1-100)");
+        if (squares >= 1 && squares <= 100) { //check if not too many or too few squares
+            const divRow = document.querySelectorAll('.row');
+            divRow.forEach( (row) => { //remove existing grid
+                row.remove();
+            })
+            createRows(squares); //then create a new one with size of 'squares'
+            fillRows(squares);
+            detectMouse(); //switch mouse detection on
+        } else{
+            alert("Invalid size");
+        }
+    });
+    
 }
 
 main();
-
-
-//Also works//
-
-// function main () {
-
-//     createRows();
-
-//     const divRow = document.querySelectorAll('.row');
-//     divRow.forEach( row => fillRows(row.classList[1])) //classList[1] == `row${i}` from createRows()
-// }
-
-// function createRows() {
-//     for (let i = 0; i < 16; i++) {
-//         const divWhole = document.querySelector('.divWhole');
-//         const divCreate = document.createElement('div');
-//         divCreate.classList.add('row', `row${i}`);
-//         divWhole.appendChild(divCreate);
-//     }
-// }
-
-// function fillRows(rowNum) {
-//     for (let i = 0; i < 16; i++) {
-//         const divRow = document.querySelector(`.${rowNum}`);
-//         const divCreate = document.createElement('div');
-//         divCreate.classList.add('single');
-//         divRow.appendChild(divCreate);
-//     }
-// }
-
-// main();
